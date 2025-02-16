@@ -1,4 +1,4 @@
-/* General Reset */
+/* General Styles */
 * {
     margin: 0;
     padding: 0;
@@ -6,12 +6,12 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* Intro Section */
+/* Intro Animation */
 .intro {
     position: fixed;
     width: 100%;
     height: 100vh;
-    background: #000;
+    background: black;
     color: white;
     display: flex;
     justify-content: center;
@@ -22,60 +22,399 @@
 .phase-text span {
     font-size: 5rem;
     font-weight: 800;
-    opacity: 0;
     display: inline-block;
+    opacity: 0;
     -webkit-text-stroke: 2px white;
     color: transparent;
-    transition: color 0.5s ease-in-out;
+    transition: color 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
-/* Main Page (Initially Hidden) */
-.main-page {
-    display: none;
+.phase-text span.filled {
+    color: white !important;
 }
 
-/* Hero Section */
-.hero {
-    height: 100vh;
-    background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
-    color: white;
+/* Navbar */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.3s, color 0.3s;
+}
+
+.navbar {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    animation: backgroundAnim 10s infinite alternate;
+    background: #ffffff;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition: all 0.4s ease-in-out;
 }
 
-/* Background Animation */
-@keyframes backgroundAnim {
-    0% { background: linear-gradient(135deg, #0a0a0a, #1a1a1a); }
-    100% { background: linear-gradient(135deg, #1a1a1a, #292929); }
+/* Sticky Navbar Effect */
+.sticky {
+    position: fixed;
+    background: rgba(255, 255, 255, 0.95);
+    animation: fadeIn 0.5s ease-in-out;
+    top: 0;
 }
 
-/* Hover Effects */
-.hero:hover .title {
-    transform: scale(1.05);
+@keyframes fadeIn {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.navbar a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+    font-weight: 600;
+    position: relative;
+}
+
+.navbar a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px;
+    background: #007bff;
+    transition: width 0.3s ease-in-out;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+#dark-mode-toggle {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 20px;
+    border-radius: 5px;
+    cursor: pointer;
     transition: 0.3s;
+}
+
+#dark-mode-toggle:hover {
+    background: #0056b3;
+}
+
+/* Dark Mode */
+.dark-mode {
+    background: #121212;
+    color: #ffffff;
+}
+
+.dark-mode .navbar {
+    background: #1e1e1e;
+}
+
+.dark-mode .sticky {
+    background: rgba(30, 30, 30, 0.95);
+}
+
+.dark-mode .navbar a {
+    color: #ffffff;
+}
+
+.dark-mode .navbar a::after {
+    background: #ffcc00;
+}
+
+.dark-mode #dark-mode-toggle {
+    background: #ffcc00;
+    color: #121212;
+}
+
+.dark-mode #dark-mode-toggle:hover {
+    background: #e6b800;
+}
+
+/* Extra Content to See the Effect */
+.content {
+    height: 150vh;
+    padding-top: 80px;
+    text-align: center;
+}
+
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #4A90E2, #904E95);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    opacity: 0.9;
+    animation: fadeIn 1.2s ease-in-out;
 }
 
 .cta-button {
-    margin-top: 20px;
-    padding: 12px 24px;
-    font-size: 1.2rem;
+    display: inline-block;
+    background: #ff6b6b;
     color: white;
-    background: linear-gradient(45deg, #ff4500, #ff6500);
+    padding: 12px 24px;
+    font-size: 18px;
+    border-radius: 30px;
     text-decoration: none;
-    border-radius: 25px;
-    transition: 0.3s;
+    font-weight: bold;
+    transition: all 0.3s ease;
 }
 
 .cta-button:hover {
+    background: #ff4757;
     transform: scale(1.1);
-    background: linear-gradient(45deg, #ff6500, #ff8500);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .title { font-size: 3rem; }
+.hero-images {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
 }
+
+.hero-image {
+    width: 200px;
+    height: 150px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.4s ease-in-out;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.hero-image:hover {
+    transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.team {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+}
+
+.team h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.team-members {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.member {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 250px;
+    transition: transform 0.3s;
+}
+
+.member:hover {
+    transform: translateY(-5px);
+}
+
+.member img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.member h3 {
+    font-size: 20px;
+    color: #222;
+    margin-bottom: 5px;
+}
+
+.member p {
+    font-size: 14px;
+    color: #555;
+}
+
+
+/* Sections */
+.contact {
+    background: linear-gradient(135deg, #4A90E2, #904E95);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.contact-container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.contact h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.contact p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.cta-button1 {
+    background: #ff6b6b;
+    color: white;
+    padding: 12px 24px;
+    font-size: 18px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cta-button1:hover {
+    background: #ff4757;
+    transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Dark Mode */
+.dark-mode {
+    background: black;
+    color: white;
+}
+
+.projects {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f8f9fa;
+}
+
+.project-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 280px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.card h3 {
+    margin: 12px 0;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+}
+
