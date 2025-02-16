@@ -1,0 +1,81 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Intro Section */
+.intro {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.phase-text span {
+    font-size: 5rem;
+    font-weight: 800;
+    opacity: 0;
+    display: inline-block;
+    -webkit-text-stroke: 2px white;
+    color: transparent;
+    transition: color 0.5s ease-in-out;
+}
+
+/* Main Page (Initially Hidden) */
+.main-page {
+    display: none;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation: backgroundAnim 10s infinite alternate;
+}
+
+/* Background Animation */
+@keyframes backgroundAnim {
+    0% { background: linear-gradient(135deg, #0a0a0a, #1a1a1a); }
+    100% { background: linear-gradient(135deg, #1a1a1a, #292929); }
+}
+
+/* Hover Effects */
+.hero:hover .title {
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+.cta-button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    color: white;
+    background: linear-gradient(45deg, #ff4500, #ff6500);
+    text-decoration: none;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+.cta-button:hover {
+    transform: scale(1.1);
+    background: linear-gradient(45deg, #ff6500, #ff8500);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .title { font-size: 3rem; }
+}
